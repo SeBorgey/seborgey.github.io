@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" id="html-doc">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="resume_title">Резюме - Сергей Малышев</title>
-    <!-- Подключаем шрифты Google -->
+    <title>Резюме - Сергей Малышев</title>
+    <!-- Подключаем шрифты: Roboto для основного текста, Montserrat для заголовков, Merriweather для цитаты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Merriweather:ital@1&display=swap" rel="stylesheet">
     <!-- Подключаем иконки Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Подключаем библиотеку для генерации PDF -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         :root {
-            --primary-color: #2c3e50; /* Темно-синий */
-            --secondary-color: #3498db; /* Ярко-синий */
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
             --background-color: #f0f2f5;
             --card-background: #ffffff;
             --text-color: #333;
@@ -28,7 +26,6 @@
             margin: 0;
             background-color: var(--background-color);
             color: var(--text-color);
-            transition: background-color 0.3s;
         }
 
         /* --- ШАПКА --- */
@@ -46,7 +43,6 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-grow: 1; /* Позволяет занимать доступное место */
         }
         .hero-photo {
             width: 80px;
@@ -65,65 +61,64 @@
             font-size: 1.1em;
             opacity: 0.9;
         }
-        /* Блок "О себе" */
-        .hero-summary {
-            font-style: italic;
-            font-family: 'Roboto', sans-serif;
-            max-width: 400px;
-            margin-left: 20px;
-            opacity: 0.9;
-            font-size: 0.95em;
-        }
-
         .hero-right {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
         }
-        /* Блок управления (язык, PDF) */
         .hero-controls {
             display: flex;
             flex-direction: column;
-            gap: 8px;
             align-items: center;
+            gap: 8px;
         }
-        .lang-switcher button {
-            background: none;
-            border: 1px solid var(--light-text-color);
+        .lang-switcher a {
             color: var(--light-text-color);
-            padding: 3px 8px;
-            cursor: pointer;
-            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
             font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
-        .lang-switcher button.active {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            color: #fff;
+        .lang-switcher a.active {
+            opacity: 1;
+            text-decoration: underline;
         }
-        .pdf-btn {
-            background: none;
-            border: none;
+        #btn-pdf {
             color: var(--light-text-color);
-            font-size: 1.8em; /* Размер иконки PDF */
-            cursor: pointer;
-            transition: color 0.3s, transform 0.3s;
+            font-size: 1.5em; /* Размер иконки PDF */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .pdf-btn:hover {
+        #btn-pdf:hover, .lang-switcher a:hover {
             color: var(--secondary-color);
             transform: scale(1.1);
         }
-
         .hero-contacts a {
             color: var(--light-text-color);
             font-size: 2.2em; /* Увеличили иконки контактов */
-            margin-left: 5px;
+            margin-left: 15px;
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .hero-contacts a:hover {
             color: var(--secondary-color);
             transform: scale(1.1);
+        }
+
+        /* --- БЛОК С МИССИЕЙ --- */
+        .mission-statement {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .mission-statement p {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.3em;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        .mission-statement p::before, .mission-statement p::after {
+            content: '"';
         }
 
         /* --- СТАТИЧНАЯ СТРОКА НАВЫКОВ --- */
@@ -138,42 +133,25 @@
             gap: 10px 25px;
         }
         .skill-item {
-            font-size: 1em;
-            font-weight: bold;
-            color: var(--primary-color);
-            background-color: #eaf2f8;
-            padding: 5px 15px;
-            border-radius: 15px;
+            font-size: 1em; font-weight: bold; color: var(--primary-color);
+            background-color: #eaf2f8; padding: 5px 15px; border-radius: 15px;
         }
         
-        /* --- ОСНОВНОЙ КОНТЕНТ (3 КОЛОНКИ) --- */
+        /* --- ОСНОВНОЙ КОНТЕНТ --- */
         .main-content {
-            display: grid;
-            gap: 20px;
-            padding: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-            grid-template-columns: 1fr;
+            display: grid; gap: 20px; padding: 30px;
+            max-width: 1400px; margin: 0 auto; grid-template-columns: 1fr;
         }
         .card {
-            background: var(--card-background);
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--card-background); padding: 20px; border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.08); }
         .card h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--secondary-color);
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-            margin: 0 0 15px 0;
-            font-size: 1.2em;
-            display: flex; align-items: center; gap: 10px;
+            font-family: 'Montserrat', sans-serif; color: var(--secondary-color);
+            border-bottom: 2px solid #e0e0e0; padding-bottom: 10px;
+            margin: 0 0 15px 0; font-size: 1.2em;
         }
         .section-item { margin-bottom: 25px; }
         .section-item:last-child { margin-bottom: 0; }
@@ -181,70 +159,63 @@
         .section-item p { margin: 0; }
         .date { font-style: italic; color: #777; font-size: 0.9em; }
         .responsibilities { padding-left: 20px; margin: 5px 0 0 0; }
+        .lang-en { display: none; } /* По умолчанию скрываем английский текст */
 
         /* --- АДАПТИВНОСТЬ --- */
         @media (min-width: 768px) { .main-content { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1100px) { .main-content { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 950px) {
-            .hero-summary { display: none; } /* Скрываем текст "О себе" на средних экранах */
-        }
         @media (max-width: 767px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-left { flex-direction: column; }
-            .hero-right { 
-                flex-direction: column-reverse; /* Контакты будут под кнопками */
-                width: 100%;
-                margin-top: 15px;
-            }
+            .hero-right { flex-direction: column-reverse; gap: 25px; margin-top: 10px; }
             .hero-contacts a { margin: 0 15px; }
+            .mission-statement p { font-size: 1.1em; }
         }
-        
-        /* === СТИЛИ ДЛЯ PDF-ВЕРСИИ === */
-        /* Этот класс будет временно добавляться к body перед печатью */
-        body.pdf-view {
-            --background-color: #ffffff; /* Белый фон для PDF */
+
+        /* --- СТИЛИ ДЛЯ ПЕЧАТИ (PDF) --- */
+        @media print {
+            :root {
+                --primary-color: #000000; --secondary-color: #000000;
+                --background-color: #ffffff; --card-background: #ffffff;
+                --text-color: #000000; --light-text-color: #000000;
+            }
+            body { background: none; font-size: 10pt; }
+            .hero { padding: 10px 0; box-shadow: none; border-bottom: 2px solid #ccc; }
+            .hero-right, .skills-bar, .mission-statement { display: none !important; } /* Скрываем ненужное */
+            .main-content {
+                grid-template-columns: 1fr !important; /* ВСЕГДА одна колонка */
+                padding: 10px; gap: 15px;
+            }
+            .card {
+                box-shadow: none; border: 1px solid #ccc;
+                padding: 15px; page-break-inside: avoid; /* Запрещаем разрывать карточку между страницами */
+            }
+            .card h2 { border-color: #ccc; }
+            a { text-decoration: none; color: #000; }
+            .lang-ru, .lang-en { display: none; } /* Сначала скроем оба языка */
+            /* Показываем только тот язык, который активен в данный момент на странице */
+            #html-doc.lang-ru-active .lang-ru { display: inline !important; }
+            #html-doc.lang-en-active .lang-en { display: inline !important; }
         }
-        .pdf-view .hero-controls, .pdf-view .hero-summary {
-             display: none !important; /* Скрываем кнопки и текст о себе в PDF */
-        }
-        .pdf-view .hero {
-            flex-direction: column !important;
-            text-align: center !important;
-        }
-        .pdf-view .hero-left {
-            flex-direction: column !important;
-        }
-        .pdf-view .main-content {
-            grid-template-columns: 1fr !important; /* Всегда 1 колонка */
-            padding: 10px !important;
-            gap: 15px !important;
-        }
-        .pdf-view .card {
-            box-shadow: none !important;
-            border: 1px solid #eee;
-        }
+
     </style>
 </head>
 <body>
 
     <header class="hero">
         <div class="hero-left">
-            <img src="photo.jpg" alt="Это я" class="hero-photo" data-key="photo_alt">
+            <img src="photo.jpg" alt="Это я" class="hero-photo">
             <div class="hero-title">
-                <h1 data-key="name">Сергей Малышев</h1>
-                <p data-key="job_title">NLP Research Engineer</p>
-            </div>
-            <div class="hero-summary">
-                <p data-key="summary_text">Ищу возможности для применения своих навыков в области обработки естественного языка и машинного обучения для создания инновационных продуктов.</p>
+                <h1><span class="lang-ru">Сергей Малышев</span><span class="lang-en">Sergey Malyshev</span></h1>
+                <p>NLP Research Engineer</p>
             </div>
         </div>
         <div class="hero-right">
             <div class="hero-controls">
                 <div class="lang-switcher">
-                    <button id="lang-ru" class="active">RU</button>
-                    <button id="lang-en">EN</button>
+                    <a href="#" id="btn-ru" class="active">RU</a> | <a href="#" id="btn-en">EN</a>
                 </div>
-                <button class="pdf-btn" id="pdf-btn" title="Скачать PDF"><i class="fas fa-file-pdf"></i></button>
+                <a href="#" id="btn-pdf" title="Скачать PDF"><i class="fas fa-file-pdf"></i></a>
             </div>
             <div class="hero-contacts">
                 <a href="https://github.com/SeBorgey" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -255,264 +226,140 @@
     </header>
 
     <div class="skills-bar">
-        <div class="skill-item">Embedded</div>
-        <div class="skill-item">C++</div>
-        <div class="skill-item">SQL</div>
-        <div class="skill-item">NLP</div>
-        <div class="skill-item">LLM</div>
-        <div class="skill-item">Python</div>
-        <div class="skill-item">Android</div>
-        <div class="skill-item">Qt</div>
+        <div class="skill-item">Embedded</div><div class="skill-item">C++</div><div class="skill-item">SQL</div>
+        <div class="skill-item">NLP</div><div class="skill-item">LLM</div><div class="skill-item">Python</div>
+        <div class="skill-item">Android</div><div class="skill-item">Qt</div>
+    </div>
+
+    <div class="mission-statement">
+        <p><span class="lang-ru">Ищу такую работу, на которой я смогу заниматься достижением AGI</span><span class="lang-en">Seeking a position where I can contribute to the pursuit of AGI</span></p>
     </div>
 
     <main class="main-content">
         <div class="card" id="education">
-            <h2><i class="fas fa-graduation-cap"></i><span data-key="education_header"> Образование</span></h2>
+            <h2><i class="fas fa-graduation-cap"></i> <span class="lang-ru">Образование</span><span class="lang-en">Education</span></h2>
             <div class="section-item">
-                <h3 data-key="edu1_title">МФТИ (бакалавриат)</h3>
-                <p><strong data-key="edu1_major_label">Специальность:</strong><span data-key="edu1_major_value"> ПМИ</span></p>
-                <p class="date" data-key="edu1_date">Годы: 2023 - н.в.</p>
+                <h3><span class="lang-ru">МФТИ (бакалавриат)</span><span class="lang-en">MIPT (Bachelor's Degree)</span></h3>
+                <p><strong><span class="lang-ru">Специальность:</span><span class="lang-en">Major:</span></strong> <span class="lang-ru">ПМИ</span><span class="lang-en">Applied Mathematics and Informatics</span></p>
+                <p class="date"><span class="lang-ru">Годы: 2023 - н.в.</span><span class="lang-en">Years: 2023 - present</span></p>
             </div>
             <div class="section-item">
-                <h3 data-key="edu2_title">Deep Learning School</h3>
-                <p><strong data-key="edu2_major_label">Курс:</strong><span data-key="edu2_major_value"> ML</span></p>
-                <p class="date" data-key="edu2_date">Год: 2021</p>
+                <h3>Deep Learning School</h3>
+                <p><strong><span class="lang-ru">Курс:</span><span class="lang-en">Course:</span></strong> ML</p>
+                <p class="date"><span class="lang-ru">Год: 2021</span><span class="lang-en">Year: 2021</span></p>
             </div>
             <div class="section-item">
-                <h3 data-key="edu3_title">УРТК им. Попова (среднее специальное)</h3>
-                <p><strong data-key="edu3_major_label">Специальность:</strong><span data-key="edu3_major_value"> Радиоаппаратостроение</span></p>
-                <p class="date" data-key="edu3_date">Год: 2013-2018</p>
+                <h3><span class="lang-ru">УРТК им. Попова (среднее специальное)</span><span class="lang-en">URTC named after Popov (college)</span></h3>
+                <p><strong><span class="lang-ru">Специальность:</span><span class="lang-en">Major:</span></strong> <span class="lang-ru">Радиоаппаратостроение</span><span class="lang-en">Radio Engineering</span></p>
+                <p class="date"><span class="lang-ru">Годы: 2013-2018</span><span class="lang-en">Years: 2013-2018</span></p>
             </div>
         </div>
 
         <div class="card" id="experience">
-            <h2><i class="fas fa-briefcase"></i><span data-key="experience_header"> Опыт работы</span></h2>
+            <h2><i class="fas fa-briefcase"></i> <span class="lang-ru">Опыт работы</span><span class="lang-en">Work Experience</span></h2>
             <div class="section-item">
-                <h3 data-key="exp1_company">DeepPavlov</h3>
-                <p><strong data-key="exp1_role_label">Должность:</strong><span data-key="exp1_role_value"> NLP Engineer</span></p>
-                <p class="date" data-key="exp1_date">июль 2024 - н.в.</p>
+                <h3>DeepPavlov</h3>
+                <p><strong><span class="lang-ru">Должность:</span><span class="lang-en">Position:</span></strong> NLP Engineer</p>
+                <p class="date"><span class="lang-ru">июль 2024 - н.в.</span><span class="lang-en">July 2024 - present</span></p>
                 <ul class="responsibilities">
-                    <li data-key="exp1_resp1">Создание модулей перевода и интентов робота-продавца</li>
-                    <li data-key="exp1_resp2">Разработка фреймворка <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a></li>
+                    <li><span class="lang-ru">Создание модулей перевода и интентов робота-продавца</span><span class="lang-en">Creating translation modules and intents for a sales bot</span></li>
+                    <li><span class="lang-ru">Разработка фреймворка</span><span class="lang-en">Development of the framework</span> <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a></li>
                 </ul>
-                <p><strong data-key="stack_label">Стек:</strong> Python, NLP, LLM</p>
+                <p><strong>Stack:</strong> Python, NLP, LLM</p>
             </div>
             <div class="section-item">
-                <h3 data-key="exp2_company">НИЦ Резонанс</h3>
-                <p><strong data-key="exp2_role_label">Должность:</strong><span data-key="exp2_role_value"> Инженер-программист</span></p>
-                <p class="date" data-key="exp2_date">Июль 2021 - Август 2023</p>
+                <h3><span class="lang-ru">НИЦ Резонанс</span><span class="lang-en">Resonance Research Center</span></h3>
+                <p><strong><span class="lang-ru">Должность:</span><span class="lang-en">Position:</span></strong> <span class="lang-ru">Инженер-программист</span><span class="lang-en">Software Engineer</span></p>
+                <p class="date"><span class="lang-ru">Июль 2021 - Август 2023</span><span class="lang-en">July 2021 - August 2023</span></p>
                 <ul class="responsibilities">
-                    <li data-key="exp2_resp1">Разработка ПО рабочего места оператора</li>
-                    <li data-key="exp2_resp2">Сервисное обслуживание радиолокаторов</li>
+                    <li><span class="lang-ru">Разработка ПО рабочего места оператора</span><span class="lang-en">Development of operator's workstation software</span></li>
+                    <li><span class="lang-ru">Сервисное обслуживание радиолокаторов</span><span class="lang-en">Maintenance of radar systems</span></li>
                 </ul>
-                <p><strong data-key="stack_label_2">Стек:</strong> C++/Qt, Shell</p>
+                <p><strong>Stack:</strong> C++/Qt, Shell</p>
             </div>
             <div class="section-item">
-                <h3 data-key="exp3_company">Алмаз-Антей</h3>
-                <p><strong data-key="exp3_role_label">Должность:</strong><span data-key="exp3_role_value"> Инженер-программист</span></p>
-                <p class="date" data-key="exp3_date">Апрель 2020 - Июнь 2021</p>
+                <h3><span class="lang-ru">Алмаз-Антей</span><span class="lang-en">Almaz-Antey</span></h3>
+                <p><strong><span class="lang-ru">Должность:</span><span class="lang-en">Position:</span></strong> <span class="lang-ru">Инженер-программист</span><span class="lang-en">Software Engineer</span></p>
+                <p class="date"><span class="lang-ru">Апрель 2020 - Июнь 2021</span><span class="lang-en">April 2020 - June 2021</span></p>
                 <ul class="responsibilities">
-                    <li data-key="exp3_resp1">Разработка встроенного ПО метеосистем</li>
-                    <li data-key="exp3_resp2">Разработка и сопровождение ПО для настройки и регулировки метеосистем</li>
+                    <li><span class="lang-ru">Разработка встроенного ПО метеосистем</span><span class="lang-en">Development of embedded software for meteorological systems</span></li>
+                    <li><span class="lang-ru">Разработка и сопровождение ПО для настройки и регулировки метеосистем</span><span class="lang-en">Development and support of software for meteorological systems setup</span></li>
                 </ul>
-                <p><strong data-key="stack_label_3">Стек:</strong> C++/Qt, Embedded, Java, Pascal</p>
+                <p><strong>Stack:</strong> C++/Qt, Embedded, Java, Pascal</p>
             </div>
         </div>
 
         <div class="card" id="projects">
-            <h2><i class="fas fa-project-diagram"></i><span data-key="projects_header"> Проекты</span></h2>
+            <h2><i class="fas fa-project-diagram"></i> <span class="lang-ru">Проекты</span><span class="lang-en">Projects</span></h2>
             <div class="section-item">
-                <h3><a href="https://github.com/SeBorgey/Vocabular_new" target="_blank">Vocabular:</a><span data-key="proj1_desc"> Приложение для изучения иностранных языков</span></h3>
-                <p><strong data-key="stack_label_4">Стек:</strong> C++/Qt</p>
+                <h3><a href="https://github.com/SeBorgey/Vocabular_new" target="_blank">Vocabular:</a> <span class="lang-ru">Приложение для изучения иностранных языков</span><span class="lang-en">An application for learning foreign languages</span></h3>
+                <p><strong>Stack:</strong> C++/Qt</p>
             </div>
              <div class="section-item">
-                <h3><a href="https://github.com/SeBorgey/Imagator_new" target="_blank">Imagator:</a><span data-key="proj2_desc"> Tg-бот. ИИ-редактор изображений</span></h3>
-                <p><strong data-key="stack_label_5">Стек:</strong> Python, CV</p>
+                <h3><a href="https://github.com/SeBorgey/Imagator_new" target="_blank">Imagator:</a> <span class="lang-ru">Tg-бот. ИИ-редактор изображений</span><span class="lang-en">Telegram bot. AI image editor</span></h3>
+                <p><strong>Stack:</strong> Python, CV</p>
             </div>
             <div class="section-item">
-                <h3><a href="https://github.com/SeBorgey/Validator" target="_blank">Validator:</a><span data-key="proj3_desc"> Ассистент для спортивного программирования</span></h3>
-                <p><strong data-key="stack_label_6">Стек:</strong> Python</p>
+                <h3><a href="https://github.com/SeBorgey/Validator" target="_blank">Validator:</a> <span class="lang-ru">Ассистент для спортивного программирования</span><span class="lang-en">An assistant for competitive programming</span></h3>
+                <p><strong>Stack:</strong> Python</p>
             </div>
             <div class="section-item">
-                <h3><a href="#" target="_blank">MathSolver:</a><span data-key="proj4_desc"> Приложение для поддержки студентов в обучении</span></h3>
-                <p><strong data-key="stack_label_7">Стек:</strong> Kotlin, LLM, Android</p>
+                <h3>MathSolver: <span class="lang-ru">Приложение для поддержки студентов в обучении</span><span class="lang-en">An application to support students in their studies</span></h3>
+                <p><strong>Stack:</strong> Kotlin, LLM, Android</p>
             </div>
             <div class="section-item">
-                <h3><a href="#" target="_blank">Brawlkov:</a><span data-key="proj5_desc"> Игра лутер-шутер от 3 лица</span></h3>
-                <p><strong data-key="stack_label_8">Стек:</strong> C#, Unity, Android</p>
+                <h3>Brawlkov: <span class="lang-ru">Игра лутер-шутер от 3 лица</span><span class="lang-en">A third-person looter-shooter game</span></h3>
+                <p><strong>Stack:</strong> C#, Unity, Android</p>
             </div>
         </div>
     </main>
 
-<script>
-// === БАЗА ДАННЫХ С ТЕКСТАМИ ===
-const translations = {
-    ru: {
-        resume_title: 'Резюме - Сергей Малышев',
-        photo_alt: 'Это я',
-        name: 'Сергей Малышев',
-        job_title: 'NLP Research Engineer',
-        summary_text: 'Ищу возможности для применения своих навыков в области обработки естественного языка и машинного обучения для создания инновационных продуктов.',
-        education_header: ' Образование',
-        edu1_title: 'МФТИ (бакалавриат)',
-        edu1_major_label: 'Специальность:',
-        edu1_major_value: ' ПМИ',
-        edu1_date: 'Годы: 2023 - н.в.',
-        edu2_title: 'Deep Learning School',
-        edu2_major_label: 'Курс:',
-        edu2_major_value: ' ML',
-        edu2_date: 'Год: 2021',
-        edu3_title: 'УРТК им. Попова (среднее специальное)',
-        edu3_major_label: 'Специальность:',
-        edu3_major_value: ' Радиоаппаратостроение',
-        edu3_date: 'Год: 2013-2018',
-        experience_header: ' Опыт работы',
-        exp1_company: 'DeepPavlov',
-        exp1_role_label: 'Должность:',
-        exp1_role_value: ' NLP Engineer',
-        exp1_date: 'июль 2024 - н.в.',
-        exp1_resp1: 'Создание модулей перевода и интентов робота-продавца',
-        exp1_resp2: 'Разработка фреймворка <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a>',
-        stack_label: 'Стек:',
-        exp2_company: 'НИЦ Резонанс',
-        exp2_role_label: 'Должность:',
-        exp2_role_value: ' Инженер-программист',
-        exp2_date: 'Июль 2021 - Август 2023',
-        exp2_resp1: 'Разработка ПО рабочего места оператора',
-        exp2_resp2: 'Сервисное обслуживание радиолокаторов',
-        stack_label_2: 'Стек:',
-        exp3_company: 'Алмаз-Антей',
-        exp3_role_label: 'Должность:',
-        exp3_role_value: ' Инженер-программист',
-        exp3_date: 'Апрель 2020 - Июнь 2021',
-        exp3_resp1: 'Разработка встроенного ПО метеосистем',
-        exp3_resp2: 'Разработка и сопровождение ПО для настройки и регулировки метеосистем',
-        stack_label_3: 'Стек:',
-        projects_header: ' Проекты',
-        proj1_desc: ' Приложение для изучения иностранных языков',
-        stack_label_4: 'Стек:',
-        proj2_desc: ' Tg-бот. ИИ-редактор изображений',
-        stack_label_5: 'Стек:',
-        proj3_desc: ' Ассистент для спортивного программирования',
-        stack_label_6: 'Стек:',
-        proj4_desc: ' Приложение для поддержки студентов в обучении',
-        stack_label_7: 'Стек:',
-        proj5_desc: ' Игра лутер-шутер от 3 лица',
-        stack_label_8: 'Стек:',
-    },
-    en: {
-        resume_title: 'Resume - Sergey Malyshev',
-        photo_alt: 'It\'s me',
-        name: 'Sergey Malyshev',
-        job_title: 'NLP Research Engineer',
-        summary_text: 'Seeking opportunities to apply my skills in Natural Language Processing and Machine Learning to create innovative products.',
-        education_header: ' Education',
-        edu1_title: 'MIPT (Bachelor\'s Degree)',
-        edu1_major_label: 'Major:',
-        edu1_major_value: ' Applied Mathematics and Informatics',
-        edu1_date: 'Years: 2023 - Present',
-        edu2_title: 'Deep Learning School',
-        edu2_major_label: 'Course:',
-        edu2_major_value: ' ML',
-        edu2_date: 'Year: 2021',
-        edu3_title: 'URTC n.a. Popov (Vocational College)',
-        edu3_major_label: 'Specialty:',
-        edu3_major_value: ' Radio-Apparatus Engineering',
-        edu3_date: 'Year: 2013-2018',
-        experience_header: ' Work Experience',
-        exp1_company: 'DeepPavlov',
-        exp1_role_label: 'Position:',
-        exp1_role_value: ' NLP Engineer',
-        exp1_date: 'July 2024 - Present',
-        exp1_resp1: 'Creating translation modules and intents for a sales robot',
-        exp1_resp2: 'Developing the <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a> framework',
-        stack_label: 'Tech Stack:',
-        exp2_company: 'SIC Resonance',
-        exp2_role_label: 'Position:',
-        exp2_role_value: ' Software Engineer',
-        exp2_date: 'July 2021 - August 2023',
-        exp2_resp1: 'Developing software for operator\'s workstation',
-        exp2_resp2: 'Maintenance of radar systems',
-        stack_label_2: 'Tech Stack:',
-        exp3_company: 'Almaz-Antey',
-        exp3_role_label: 'Position:',
-        exp3_role_value: ' Software Engineer',
-        exp3_date: 'April 2020 - June 2021',
-        exp3_resp1: 'Developing embedded software for meteorological systems',
-        exp3_resp2: 'Developing and maintaining software for configuration and adjustment of meteorological systems',
-        stack_label_3: 'Tech Stack:',
-        projects_header: ' Projects',
-        proj1_desc: ' Application for learning foreign languages',
-        stack_label_4: 'Tech Stack:',
-        proj2_desc: ' Telegram bot. AI image editor',
-        stack_label_5: 'Tech Stack:',
-        proj3_desc: ' Assistant for competitive programming',
-        stack_label_6: 'Tech Stack:',
-        proj4_desc: ' Application to support students in their studies',
-        stack_label_7: 'Tech Stack:',
-        proj5_desc: ' 3rd person looter-shooter game',
-        stack_label_8: 'Tech Stack:',
-    }
-};
+    <!-- СКРИПТ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА И ПЕЧАТИ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnRu = document.getElementById('btn-ru');
+            const btnEn = document.getElementById('btn-en');
+            const btnPdf = document.getElementById('btn-pdf');
+            const htmlDoc = document.getElementById('html-doc');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const langRuBtn = document.getElementById('lang-ru');
-    const langEnBtn = document.getElementById('lang-en');
-    const pdfBtn = document.getElementById('pdf-btn');
+            function switchLanguage(lang) {
+                // Устанавливаем язык документа для стилей печати
+                if (lang === 'ru') {
+                    htmlDoc.classList.add('lang-ru-active');
+                    htmlDoc.classList.remove('lang-en-active');
+                } else {
+                    htmlDoc.classList.add('lang-en-active');
+                    htmlDoc.classList.remove('lang-ru-active');
+                }
+                
+                // Переключаем активность кнопок
+                btnRu.classList.toggle('active', lang === 'ru');
+                btnEn.classList.toggle('active', lang === 'en');
 
-    const setLanguage = (lang) => {
-        // Устанавливаем язык для всей страницы
-        document.documentElement.lang = lang;
-        // Проходим по всем элементам с атрибутом data-key
-        document.querySelectorAll('[data-key]').forEach(elem => {
-            const key = elem.getAttribute('data-key');
-            if (translations[lang] && translations[lang][key]) {
-                // ВАЖНО: используем innerHTML, чтобы сохранить теги, например, в ссылках
-                elem.innerHTML = translations[lang][key];
+                // Показываем/скрываем текстовые блоки
+                document.querySelectorAll('.lang-ru').forEach(el => el.style.display = (lang === 'ru') ? '' : 'none');
+                document.querySelectorAll('.lang-en').forEach(el => el.style.display = (lang === 'en') ? '' : 'none');
             }
+
+            btnRu.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchLanguage('ru');
+            });
+
+            btnEn.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchLanguage('en');
+            });
+
+            btnPdf.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.print(); // Вызываем стандартное окно печати браузера
+            });
+            
+            // Устанавливаем русский язык по умолчанию при загрузке страницы
+            switchLanguage('ru');
         });
-
-        // Обновляем активную кнопку
-        langRuBtn.classList.toggle('active', lang === 'ru');
-        langEnBtn.classList.toggle('active', lang === 'en');
-        
-        // Сохраняем выбор в локальное хранилище
-        localStorage.setItem('language', lang);
-    };
-
-    const generatePdf = () => {
-        const lang = localStorage.getItem('language') || 'ru';
-        const element = document.body;
-        const filename = `Resume_Sergey_Malyshev_${lang.toUpperCase()}.pdf`;
-        
-        const opt = {
-          margin:       0.5,
-          filename:     filename,
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true },
-          jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
-
-        // Временно добавляем класс для PDF-стилей
-        element.classList.add('pdf-view');
-        
-        // Генерируем PDF
-        html2pdf().from(element).set(opt).save().then(() => {
-            // Убираем класс после генерации, чтобы вернуть обычный вид
-            element.classList.remove('pdf-view');
-        });
-    };
-
-    // Вешаем обработчики на кнопки
-    langRuBtn.addEventListener('click', () => setLanguage('ru'));
-    langEnBtn.addEventListener('click', () => setLanguage('en'));
-    pdfBtn.addEventListener('click', generatePdf);
-
-    // При загрузке страницы проверяем сохраненный язык или ставим русский по умолчанию
-    const savedLang = localStorage.getItem('language') || 'ru';
-    setLanguage(savedLang);
-});
-</script>
+    </script>
 
 </body>
 </html>
