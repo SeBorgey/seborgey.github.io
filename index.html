@@ -4,136 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Резюме - Имя Фамилия</title>
-    <!-- Подключаем красивый шрифт от Google -->
+    <!-- Подключаем шрифты Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Подключаем иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        /* --- Базовые стили и сброс --- */
-        * {
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50; /* Темно-синий */
+            --secondary-color: #3498db; /* Ярко-синий */
+            --background-color: #f0f2f5;
+            --card-background: #ffffff;
+            --text-color: #333;
+            --light-text-color: #ecf0f1;
         }
+
         body {
             font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-color: #f0f2f5; /* Более мягкий фон */
-            color: #333;
+            background-color: var(--background-color);
+            color: var(--text-color);
         }
 
-        /* --- Шапка (Hero Section) --- */
+        /* --- ШАПКА --- */
         .hero {
-            background: #2c3e50; /* Темно-синий фон */
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 700;
-        }
-        .hero .job-title {
-            margin: 10px 0 0;
-            font-size: 1.5em;
-            font-weight: 300;
-        }
-
-        /* --- Основной контейнер и колонки --- */
-        .main-container {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 20px 40px;
             display: flex;
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-            gap: 30px; /* Пространство между колонками */
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+            gap: 20px; /* Пространство между элементами */
         }
-
-        /* --- Левая колонка (Сайдбар) --- */
-        .sidebar {
-            flex-basis: 320px; /* Фиксированная ширина сайдбара */
-            flex-shrink: 0;
+        .hero-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
-
-        /* --- Правая колонка (Основной контент) --- */
-        .content {
-            flex-grow: 1; /* Занимает оставшееся пространство */
-        }
-        
-        /* --- Общий стиль для карточек в обеих колонках --- */
-        .card {
-            background: #fff;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .profile-photo {
-            width: 180px;
-            height: 180px;
+        .hero-photo {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            display: block;
-            margin: 0 auto 20px;
-            border: 5px solid #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            border: 3px solid var(--secondary-color);
         }
-
-        h2 {
-            color: #3498db;
-            border-bottom: 2px solid #f0f2f5;
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 1.4em;
-        }
-        h3 {
-            margin-top: 0;
-            margin-bottom: 5px;
-            color: #2c3e50;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- Стили для конкретных секций --- */
-        .contact-info ul, .skills ul {
-            list-style-type: none;
-            padding: 0;
+        .hero-title h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
             margin: 0;
         }
-        .contact-info li, .skills li {
-            margin-bottom: 10px;
+        .hero-title p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
         }
-        .section-item {
-            margin-bottom: 25px;
+        .hero-contacts a {
+            color: var(--light-text-color);
+            font-size: 1.8em; /* Размер иконок */
+            margin-left: 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .section-item:last-child {
-            margin-bottom: 0;
-        }
-        .date {
-            font-style: italic;
-            color: #777;
-            font-size: 0.9em;
-        }
-        .responsibilities {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-top: 10px;
+        .hero-contacts a:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
         }
 
-        /* --- Адаптивность для мобильных устройств --- */
-        @media (max-width: 800px) {
-            .main-container {
-                flex-direction: column; /* Колонки встают друг под друга */
+        /* --- БЕГУЩАЯ СТРОКА НАВЫКОВ --- */
+        .skills-ticker {
+            background-color: var(--card-background);
+            overflow: hidden; /* Скрывает все, что выходит за пределы блока */
+            padding: 15px 0;
+            white-space: nowrap; /* Запрещает перенос текста */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .skills-track {
+            display: inline-block;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        .skill-item {
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--primary-color);
+            padding: 0 40px; /* Большой отступ между навыками */
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Скроллим ровно на половину ширины трека */
+        }
+
+        /* --- ОСНОВНОЙ КОНТЕНТ (3 КОЛОНКИ) --- */
+        .main-content {
+            display: grid;
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            /* По умолчанию 1 колонка */
+            grid-template-columns: 1fr;
+        }
+        .card {
+            background: var(--card-background);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-color);
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .section-item { margin-bottom: 20px; }
+        .section-item:last-child { margin-bottom: 0; }
+        .date { font-style: italic; color: #777; }
+        .responsibilities { padding-left: 20px; }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        /* Планшеты: 2 колонки */
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .sidebar {
-                flex-basis: auto; /* Ширина сайдбара становится автоматической */
+        }
+
+        /* Десктопы: 3 колонки */
+        @media (min-width: 1100px) {
+            .main-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Адаптация шапки для узких экранов */
+        @media (max-width: 767px) {
+            .hero {
+                flex-direction: column; /* Все элементы в столбик */
+                text-align: center;
+                padding: 20px;
+            }
+            .hero-left {
+                flex-direction: column;
+            }
+            .hero-contacts {
+                margin-top: 10px;
+            }
+            .hero-contacts a {
+                margin: 0 15px; /* Уменьшаем отступы между иконками */
+            }
+            .skills-ticker {
+                animation-duration: 20s; /* Ускоряем бегущую строку на мобильных */
             }
         }
     </style>
@@ -141,95 +170,87 @@
 <body>
 
     <header class="hero">
-        <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-        <h1>Имя Фамилия</h1>
-        <p class="job-title">Начинающий веб-разработчик</p>
+        <div class="hero-left">
+            <!-- Не забудь загрузить свое фото под именем photo.jpg -->
+            <img src="photo.jpg" alt="Моя фотография" class="hero-photo">
+            <div class="hero-title">
+                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
+                <h1>Имя Фамилия</h1>
+                <p>Начинающий веб-разработчик</p>
+            </div>
+        </div>
+        <div class="hero-contacts">
+            <!-- ЗАМЕНИ ССЫЛКИ И ВАШ-ЛОГИН НА СВОИ -->
+            <a href="https://github.com/ВАШ-ЛОГИН" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://vk.com/ВАШ_ID" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+            <a href="https://t.me/ВАШ_НИК" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
     </header>
 
-    <div class="main-container">
-        
-        <!-- ==================== ЛЕВАЯ КОЛОНКА (САЙДБАР) ==================== -->
-        <aside class="sidebar">
-            
-            <div class="card">
-                <img src="photo.jpg" alt="Моя фотография" class="profile-photo">
-            </div>
-
-            <div class="card">
-                <h2>Контакты</h2>
-                <ul class="contact-info">
-                    <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <li><strong>Email:</strong> <a href="mailto:vash-email@example.com">vash-email@example.com</a></li>
-                    <li><strong>Телефон:</strong> <a href="tel:+79001234567">+7 (900) 123-45-67</a></li>
-                    <li><strong>Город:</strong> г. Москва</li>
-                    <li><strong>GitHub:</strong> <a href="https://github.com/ВАШ-ЛОГИН" target="_blank">ВАШ-ЛОГИН</a></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>Ключевые навыки</h2>
-                <ul class="skills">
-                    <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>Адаптивная верстка</li>
-                    <li>Git & GitHub</li>
-                    <li>Figma</li>
-                    <li>Основы React</li>
-                </ul>
-            </div>
-
-        </aside>
-
-        <!-- ==================== ПРАВАЯ КОЛОНКА (КОНТЕНТ) ==================== -->
-        <main class="content">
-
-            <div class="card">
-                <h2>Опыт работы</h2>
-                <div class="section-item">
-                    <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <h3>Название компании</h3>
-                    <p><strong>Должность:</strong> Младший веб-разработчик</p>
-                    <p class="date">Январь 2022 - по настоящее время</p>
-                    <ul class="responsibilities">
-                        <li>Разработка и поддержка пользовательских интерфейсов.</li>
-                        <li>Верстка макетов из Figma с обеспечением кроссбраузерности.</li>
-                        <li>Работа в команде по методологии Agile.</li>
-                        <li>Оптимизация скорости загрузки страниц.</li>
-                    </ul>
-                </div>
-                <!-- Можно скопировать блок .section-item, чтобы добавить еще одно место работы -->
-            </div>
-
-            <div class="card">
-                <h2>Проекты</h2>
-                <div class="section-item">
-                     <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <h3><a href="#" target="_blank">Название проекта 1</a></h3>
-                    <p>Краткое описание проекта. Какие задачи он решал, в чем заключалась ваша роль. Например: "Сайт-портфолио для фотографа с галереей и формой обратной связи".</p>
-                    <p><strong>Стек технологий:</strong> HTML, CSS, JavaScript</p>
-                </div>
-                <div class="section-item">
-                    <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <h3><a href="#" target="_blank">Название проекта 2</a></h3>
-                    <p>Еще одно описание. Например: "Лендинг для онлайн-курсов с адаптивной версткой и анимациями при прокрутке".</p>
-                    <p><strong>Стек технологий:</strong> HTML, SCSS, Gulp, JavaScript</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>Образование</h2>
-                <div class="section-item">
-                    <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                    <h3>Название университета или учебного заведения</h3>
-                    <p><strong>Специальность:</strong> Информационные технологии</p>
-                    <p class="date">Годы обучения: 2018 - 2022</p>
-                </div>
-            </div>
-            
-        </main>
-
+    <div class="skills-ticker">
+        <div class="skills-track">
+            <!-- Просто скопируй этот блок, чтобы сделать строку длиннее и избежать рывков -->
+            <div class="skill-item">HTML5</div>
+            <div class="skill-item">CSS3 & SCSS</div>
+            <div class="skill-item">JavaScript (ES6+)</div>
+            <div class="skill-item">Адаптивная верстка</div>
+            <div class="skill-item">Git & GitHub</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">React (Основы)</div>
+            <div class="skill-item">Node.js (Основы)</div>
+            <!-- Дублируем навыки для создания эффекта бесконечной прокрутки -->
+            <div class="skill-item">HTML5</div>
+            <div class="skill-item">CSS3 & SCSS</div>
+            <div class="skill-item">JavaScript (ES6+)</div>
+            <div class="skill-item">Адаптивная верстка</div>
+            <div class="skill-item">Git & GitHub</div>
+            <div class="skill-item">Figma</div>
+            <div class="skill-item">React (Основы)</div>
+            <div class="skill-item">Node.js (Основы)</div>
+        </div>
     </div>
+
+    <main class="main-content">
+        <div class="card" id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
+            <div class="section-item">
+                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
+                <h3>Название университета</h3>
+                <p><strong>Специальность:</strong> Информационные технологии</p>
+                <p class="date">2018 - 2022</p>
+            </div>
+        </div>
+
+        <div class="card" id="experience">
+            <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
+            <div class="section-item">
+                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
+                <h3>Название компании</h3>
+                <p><strong>Должность:</strong> Младший веб-разработчик</p>
+                <p class="date">Январь 2022 - н.в.</p>
+                <ul class="responsibilities">
+                    <li>Разработка и поддержка пользовательских интерфейсов.</li>
+                    <li>Верстка макетов из Figma.</li>
+                    <li>Работа в команде по методологии Agile.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Проекты</h2>
+            <div class="section-item">
+                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
+                <h3><a href="#" target="_blank">Название проекта 1</a></h3>
+                <p>Сайт-портфолио для фотографа с галереей и формой обратной связи.</p>
+                <p><strong>Стек:</strong> HTML, CSS, JavaScript</p>
+            </div>
+             <div class="section-item">
+                <h3><a href="#" target="_blank">Название проекта 2</a></h3>
+                <p>Лендинг для онлайн-курсов с адаптивной версткой.</p>
+                <p><strong>Стек:</strong> HTML, SCSS, JavaScript</p>
+            </div>
+        </div>
+    </main>
 
 </body>
 </html>
