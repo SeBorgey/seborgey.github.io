@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме - Имя Фамилия</title>
-    <!-- Подключаем шрифты Google -->
+    <title>Резюме - Сергей Малышев</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Подключаем иконки Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --primary-color: #2c3e50; /* Темно-синий */
-            --secondary-color: #3498db; /* Ярко-синий */
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
             --background-color: #f0f2f5;
             --card-background: #ffffff;
             --text-color: #333;
@@ -28,11 +26,10 @@
             color: var(--text-color);
         }
 
-        /* --- ШАПКА --- */
         .hero {
             background-color: var(--primary-color);
             color: var(--light-text-color);
-            padding: 20px 30px; /* Уменьшили отступы */
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -64,7 +61,7 @@
         .hero-contacts a {
             color: var(--light-text-color);
             font-size: 1.8em;
-            margin-left: 15px; /* Уменьшили отступы */
+            margin-left: 15px;
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .hero-contacts a:hover {
@@ -72,38 +69,36 @@
             transform: scale(1.1);
         }
 
-        /* --- СТАТИЧНАЯ СТРОКА НАВЫКОВ --- */
         .skills-bar {
             background-color: var(--card-background);
-            padding: 12px 20px; /* Уменьшили отступы */
+            padding: 12px 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Позволяет навыкам переноситься на новую строку */
-            gap: 10px 25px; /* Отступы между навыками (вертикальный и горизонтальный) */
+            flex-wrap: wrap;
+            gap: 10px 25px;
         }
         .skill-item {
             font-size: 1em;
             font-weight: bold;
             color: var(--primary-color);
-            background-color: #eaf2f8; /* Легкий фон для каждого навыка */
-            padding: 5px 15px; /* Уменьшили отступы */
-            border-radius: 15px; /* Скругленные края */
+            background-color: #eaf2f8;
+            padding: 5px 15px;
+            border-radius: 15px;
         }
         
-        /* --- ОСНОВНОЙ КОНТЕНТ (3 КОЛОНКИ) --- */
         .main-content {
             display: grid;
-            gap: 20px; /* Уменьшили отступы между карточками */
-            padding: 30px; /* Уменьшили отступы вокруг всего блока */
+            gap: 20px;
+            padding: 30px;
             max-width: 1400px;
             margin: 0 auto;
             grid-template-columns: 1fr;
         }
         .card {
             background: var(--card-background);
-            padding: 20px; /* Уменьшили внутренние отступы */
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -117,17 +112,16 @@
             color: var(--secondary-color);
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
-            margin: 0 0 15px 0; /* Уменьшили нижний отступ */
+            margin: 0 0 15px 0;
             font-size: 1.2em;
         }
-        .section-item { margin-bottom: 15px; } /* Уменьшили отступы */
+        .section-item { margin-bottom: 15px; }
         .section-item:last-child { margin-bottom: 0; }
         .section-item h3 { font-size: 1.1em; margin: 0 0 5px 0;}
         .section-item p { margin: 0; }
         .date { font-style: italic; color: #777; font-size: 0.9em; }
         .responsibilities { padding-left: 20px; margin: 5px 0 0 0; }
 
-        /* --- АДАПТИВНОСТЬ --- */
         @media (min-width: 768px) {
             .main-content { grid-template-columns: repeat(2, 1fr); }
         }
@@ -148,65 +142,62 @@
         <div class="hero-left">
             <img src="photo.jpg" alt="Моя фотография" class="hero-photo">
             <div class="hero-title">
-                <h1>Имя Фамилия</h1>
-                <p>Начинающий веб-разработчик</p>
+                <h1>Сергей Малышев</h1>
+                <p>NLP Research Engineer</p>
             </div>
         </div>
         <div class="hero-contacts">
-            <a href="https://github.com/ВАШ-ЛОГИН" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://vk.com/ВАШ_ID" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
-            <a href="https://t.me/ВАШ_НИК" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/SeBorgey" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://vk.com/id61550085" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+            <a href="https://t.me/malyshev_sa" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
     </header>
 
     <div class="skills-bar">
-        <!-- ЗАМЕНИТЕ НА СВОИ НАВЫКИ -->
-        <div class="skill-item">HTML5</div>
-        <div class="skill-item">CSS3 & SCSS</div>
-        <div class="skill-item">JavaScript (ES6+)</div>
-        <div class="skill-item">Адаптивная верстка</div>
-        <div class="skill-item">Git & GitHub</div>
-        <div class="skill-item">Figma</div>
-        <div class="skill-item">React</div>
-        <div class="skill-item">Node.js</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">C++</div>
+        <div class="skill-item">SQL</div>
+        <div class="skill-item">NLP</div>
+        <div class="skill-item">Git</div>
+        <div class="skill-item">Embedded</div>
+        <div class="skill-item">Android</div>
+        <div class="skill-item">Qt</div>
     </div>
 
     <main class="main-content">
-        <!-- === КОЛОНКА ОБРАЗОВАНИЯ === -->
         <div class="card" id="education">
             <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
             <div class="section-item">
-                <h3>Место учебы 1</h3>
-                <p><strong>Специальность:</strong> Название</p>
-                <p class="date">Годы: 2020 - 2024</p>
+                <h3>МФТИ (бакалавриат)</h3>
+                <p><strong>Специальность:</strong> ПМИ</p>
+                <p class="date">Годы: 2023 - н.в.</p>
             </div>
             <div class="section-item">
-                <h3>Место учебы 2</h3>
-                <p><strong>Курс:</strong> Веб-разработка</p>
-                <p class="date">Год: 2023</p>
+                <h3>Deep Learning School</h3>
+                <p><strong>Курс:</strong> ML</p>
+                <p class="date">Год: 2021</p>
             </div>
             <div class="section-item">
-                <h3>Место учебы 3</h3>
-                <p><strong>Курс:</strong> Продвинутый JavaScript</p>
-                <p class="date">Год: 2024</p>
+                <h3>УРФУ</h3>
+                <p><strong>Курс:</strong> Бизнес-школа</p>
+                <p class="date">Год: 2020</p>
             </div>
             <div class="section-item">
-                <h3>Место учебы 4</h3>
-                <p><strong>Семинар:</strong> Основы UI/UX</p>
-                <p class="date">Год: 2024</p>
+                <h3>УРТК им. Попова (среднее специальное)</h3>
+                <p><strong>Специальность:</strong> Радиоаппаратостроение</p>
+                <p class="date">Год: 2013-2018</p>
             </div>
         </div>
 
-        <!-- === КОЛОНКА ОПЫТА РАБОТЫ === -->
         <div class="card" id="experience">
             <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
             <div class="section-item">
-                <h3>Компания 1</h3>
-                <p><strong>Должность:</strong> Стажер-разработчик</p>
-                <p class="date">Январь 2023 - Июнь 2023</p>
+                <h3>DeepPavlov</h3>
+                <p><strong>Должность:</strong> NLP Engineer</p>
+                <p class="date">2024 - н.в.</p>
                 <ul class="responsibilities">
-                    <li>Помощь в верстке страниц.</li>
-                    <li>Исправление мелких багов.</li>
+                    <li>Создание модулей перевода и интентов для роборта-продавца.</li>
+                    <li>Разработка фреймворка <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a> </li>
                 </ul>
             </div>
             <div class="section-item">
@@ -229,7 +220,6 @@
             </div>
         </div>
 
-        <!-- === КОЛОНКА ПРОЕКТОВ === -->
         <div class="card" id="projects">
             <h2><i class="fas fa-project-diagram"></i> Проекты</h2>
             <div class="section-item">
