@@ -32,12 +32,12 @@
         .hero {
             background-color: var(--primary-color);
             color: var(--light-text-color);
-            padding: 20px 40px;
+            padding: 20px 30px; /* Уменьшили отступы */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
-            gap: 20px; /* Пространство между элементами */
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .hero-left {
             display: flex;
@@ -63,8 +63,8 @@
         }
         .hero-contacts a {
             color: var(--light-text-color);
-            font-size: 1.8em; /* Размер иконок */
-            margin-left: 20px;
+            font-size: 1.8em;
+            margin-left: 15px; /* Уменьшили отступы */
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .hero-contacts a:hover {
@@ -72,98 +72,73 @@
             transform: scale(1.1);
         }
 
-        /* --- БЕГУЩАЯ СТРОКА НАВЫКОВ --- */
-        .skills-ticker {
+        /* --- СТАТИЧНАЯ СТРОКА НАВЫКОВ --- */
+        .skills-bar {
             background-color: var(--card-background);
-            overflow: hidden; /* Скрывает все, что выходит за пределы блока */
-            padding: 15px 0;
-            white-space: nowrap; /* Запрещает перенос текста */
+            padding: 12px 20px; /* Уменьшили отступы */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .skills-track {
-            display: inline-block;
-            animation: ticker-scroll 30s linear infinite;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Позволяет навыкам переноситься на новую строку */
+            gap: 10px 25px; /* Отступы между навыками (вертикальный и горизонтальный) */
         }
         .skill-item {
-            display: inline-block;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             color: var(--primary-color);
-            padding: 0 40px; /* Большой отступ между навыками */
+            background-color: #eaf2f8; /* Легкий фон для каждого навыка */
+            padding: 5px 15px; /* Уменьшили отступы */
+            border-radius: 15px; /* Скругленные края */
         }
-        @keyframes ticker-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Скроллим ровно на половину ширины трека */
-        }
-
+        
         /* --- ОСНОВНОЙ КОНТЕНТ (3 КОЛОНКИ) --- */
         .main-content {
             display: grid;
-            gap: 30px;
-            padding: 40px;
+            gap: 20px; /* Уменьшили отступы между карточками */
+            padding: 30px; /* Уменьшили отступы вокруг всего блока */
             max-width: 1400px;
             margin: 0 auto;
-            /* По умолчанию 1 колонка */
             grid-template-columns: 1fr;
         }
         .card {
             background: var(--card-background);
-            padding: 25px;
+            padding: 20px; /* Уменьшили внутренние отступы */
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
         .card h2 {
             font-family: 'Montserrat', sans-serif;
             color: var(--secondary-color);
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
-            margin-top: 0;
+            margin: 0 0 15px 0; /* Уменьшили нижний отступ */
+            font-size: 1.2em;
         }
-        .section-item { margin-bottom: 20px; }
+        .section-item { margin-bottom: 15px; } /* Уменьшили отступы */
         .section-item:last-child { margin-bottom: 0; }
-        .date { font-style: italic; color: #777; }
-        .responsibilities { padding-left: 20px; }
+        .section-item h3 { font-size: 1.1em; margin: 0 0 5px 0;}
+        .section-item p { margin: 0; }
+        .date { font-style: italic; color: #777; font-size: 0.9em; }
+        .responsibilities { padding-left: 20px; margin: 5px 0 0 0; }
 
         /* --- АДАПТИВНОСТЬ --- */
-        /* Планшеты: 2 колонки */
         @media (min-width: 768px) {
-            .main-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .main-content { grid-template-columns: repeat(2, 1fr); }
         }
-
-        /* Десктопы: 3 колонки */
         @media (min-width: 1100px) {
-            .main-content {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .main-content { grid-template-columns: repeat(3, 1fr); }
         }
-
-        /* Адаптация шапки для узких экранов */
         @media (max-width: 767px) {
-            .hero {
-                flex-direction: column; /* Все элементы в столбик */
-                text-align: center;
-                padding: 20px;
-            }
-            .hero-left {
-                flex-direction: column;
-            }
-            .hero-contacts {
-                margin-top: 10px;
-            }
-            .hero-contacts a {
-                margin: 0 15px; /* Уменьшаем отступы между иконками */
-            }
-            .skills-ticker {
-                animation-duration: 20s; /* Ускоряем бегущую строку на мобильных */
-            }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-left { flex-direction: column; }
+            .hero-contacts { margin-top: 10px; }
+            .hero-contacts a { margin: 0 15px; }
         }
     </style>
 </head>
@@ -171,83 +146,111 @@
 
     <header class="hero">
         <div class="hero-left">
-            <!-- Не забудь загрузить свое фото под именем photo.jpg -->
             <img src="photo.jpg" alt="Моя фотография" class="hero-photo">
             <div class="hero-title">
-                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
                 <h1>Имя Фамилия</h1>
                 <p>Начинающий веб-разработчик</p>
             </div>
         </div>
         <div class="hero-contacts">
-            <!-- ЗАМЕНИ ССЫЛКИ И ВАШ-ЛОГИН НА СВОИ -->
             <a href="https://github.com/ВАШ-ЛОГИН" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://vk.com/ВАШ_ID" target="_blank" title="ВКонтакте"><i class="fab fa-vk"></i></a>
             <a href="https://t.me/ВАШ_НИК" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
         </div>
     </header>
 
-    <div class="skills-ticker">
-        <div class="skills-track">
-            <!-- Просто скопируй этот блок, чтобы сделать строку длиннее и избежать рывков -->
-            <div class="skill-item">HTML5</div>
-            <div class="skill-item">CSS3 & SCSS</div>
-            <div class="skill-item">JavaScript (ES6+)</div>
-            <div class="skill-item">Адаптивная верстка</div>
-            <div class="skill-item">Git & GitHub</div>
-            <div class="skill-item">Figma</div>
-            <div class="skill-item">React (Основы)</div>
-            <div class="skill-item">Node.js (Основы)</div>
-            <!-- Дублируем навыки для создания эффекта бесконечной прокрутки -->
-            <div class="skill-item">HTML5</div>
-            <div class="skill-item">CSS3 & SCSS</div>
-            <div class="skill-item">JavaScript (ES6+)</div>
-            <div class="skill-item">Адаптивная верстка</div>
-            <div class="skill-item">Git & GitHub</div>
-            <div class="skill-item">Figma</div>
-            <div class="skill-item">React (Основы)</div>
-            <div class="skill-item">Node.js (Основы)</div>
-        </div>
+    <div class="skills-bar">
+        <!-- ЗАМЕНИТЕ НА СВОИ НАВЫКИ -->
+        <div class="skill-item">HTML5</div>
+        <div class="skill-item">CSS3 & SCSS</div>
+        <div class="skill-item">JavaScript (ES6+)</div>
+        <div class="skill-item">Адаптивная верстка</div>
+        <div class="skill-item">Git & GitHub</div>
+        <div class="skill-item">Figma</div>
+        <div class="skill-item">React</div>
+        <div class="skill-item">Node.js</div>
     </div>
 
     <main class="main-content">
+        <!-- === КОЛОНКА ОБРАЗОВАНИЯ === -->
         <div class="card" id="education">
             <h2><i class="fas fa-graduation-cap"></i> Образование</h2>
             <div class="section-item">
-                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                <h3>Название университета</h3>
-                <p><strong>Специальность:</strong> Информационные технологии</p>
-                <p class="date">2018 - 2022</p>
+                <h3>Место учебы 1</h3>
+                <p><strong>Специальность:</strong> Название</p>
+                <p class="date">Годы: 2020 - 2024</p>
+            </div>
+            <div class="section-item">
+                <h3>Место учебы 2</h3>
+                <p><strong>Курс:</strong> Веб-разработка</p>
+                <p class="date">Год: 2023</p>
+            </div>
+            <div class="section-item">
+                <h3>Место учебы 3</h3>
+                <p><strong>Курс:</strong> Продвинутый JavaScript</p>
+                <p class="date">Год: 2024</p>
+            </div>
+            <div class="section-item">
+                <h3>Место учебы 4</h3>
+                <p><strong>Семинар:</strong> Основы UI/UX</p>
+                <p class="date">Год: 2024</p>
             </div>
         </div>
 
+        <!-- === КОЛОНКА ОПЫТА РАБОТЫ === -->
         <div class="card" id="experience">
             <h2><i class="fas fa-briefcase"></i> Опыт работы</h2>
             <div class="section-item">
-                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                <h3>Название компании</h3>
-                <p><strong>Должность:</strong> Младший веб-разработчик</p>
-                <p class="date">Январь 2022 - н.в.</p>
+                <h3>Компания 1</h3>
+                <p><strong>Должность:</strong> Стажер-разработчик</p>
+                <p class="date">Январь 2023 - Июнь 2023</p>
                 <ul class="responsibilities">
-                    <li>Разработка и поддержка пользовательских интерфейсов.</li>
-                    <li>Верстка макетов из Figma.</li>
-                    <li>Работа в команде по методологии Agile.</li>
+                    <li>Помощь в верстке страниц.</li>
+                    <li>Исправление мелких багов.</li>
+                </ul>
+            </div>
+            <div class="section-item">
+                <h3>Компания 2 (Фриланс)</h3>
+                <p><strong>Должность:</strong> Веб-разработчик</p>
+                <p class="date">Июль 2023 - Декабрь 2023</p>
+                <ul class="responsibilities">
+                    <li>Верстка лендингов по макетам.</li>
+                    <li>Доработка сайтов на WordPress.</li>
+                </ul>
+            </div>
+            <div class="section-item">
+                <h3>Компания 3</h3>
+                <p><strong>Должность:</strong> Junior Frontend Developer</p>
+                <p class="date">Январь 2024 - н.в.</p>
+                <ul class="responsibilities">
+                    <li>Разработка UI-компонентов.</li>
+                    <li>Работа с Git.</li>
                 </ul>
             </div>
         </div>
 
+        <!-- === КОЛОНКА ПРОЕКТОВ === -->
         <div class="card" id="projects">
             <h2><i class="fas fa-project-diagram"></i> Проекты</h2>
             <div class="section-item">
-                <!-- ЗАМЕНИ НА СВОИ ДАННЫЕ -->
-                <h3><a href="#" target="_blank">Название проекта 1</a></h3>
-                <p>Сайт-портфолио для фотографа с галереей и формой обратной связи.</p>
-                <p><strong>Стек:</strong> HTML, CSS, JavaScript</p>
+                <h3><a href="#" target="_blank">Проект 1: Сайт-визитка</a></h3>
+                <p><strong>Стек:</strong> HTML, CSS</p>
             </div>
              <div class="section-item">
-                <h3><a href="#" target="_blank">Название проекта 2</a></h3>
-                <p>Лендинг для онлайн-курсов с адаптивной версткой.</p>
+                <h3><a href="#" target="_blank">Проект 2: Лендинг</a></h3>
                 <p><strong>Стек:</strong> HTML, SCSS, JavaScript</p>
+            </div>
+            <div class="section-item">
+                <h3><a href="#" target="_blank">Проект 3: Калькулятор</a></h3>
+                <p><strong>Стек:</strong> HTML, CSS, JavaScript</p>
+            </div>
+            <div class="section-item">
+                <h3><a href="#" target="_blank">Проект 4: Простое To-Do приложение</a></h3>
+                <p><strong>Стек:</strong> React, CSS</p>
+            </div>
+            <div class="section-item">
+                <h3><a href="#" target="_blank">Проект 5: Этот сайт-резюме</a></h3>
+                <p><strong>Стек:</strong> HTML, CSS, GitHub Pages</p>
             </div>
         </div>
     </main>
