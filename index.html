@@ -34,52 +34,64 @@
             color: var(--text-color);
         }
 
-        /* --- ШАПКА --- */
+                /* --- ФИНАЛЬНАЯ ШАПКА --- */
         .hero {
             background-color: var(--primary-color);
             color: var(--light-text-color);
             padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            display: flex; /* Главное свойство для выравнивания в ряд */
+            justify-content: space-between; /* Расталкивает элементы по краям */
+            align-items: center; /* Выравнивает все по вертикали */
+            flex-wrap: wrap; /* Позволяет переноситься на новую строку на узких экранах */
             gap: 20px;
         }
-        .hero-left { display: flex; align-items: center; gap: 20px; }
+        /* Левая часть: Фото + Имя/Должность */
+        .hero-left { 
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
+            flex-shrink: 0; /* Не сжиматься */
+        }
         .hero-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary-color); }
         .hero-title h1 { font-family: 'Montserrat', sans-serif; font-size: 1.8em; margin: 0; }
         .hero-title p { margin: 5px 0 0; font-size: 1.1em; opacity: 0.9; }
-        
-        .hero-right { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; }
+
+        /* Центральная часть: Ваше предложение */
+        .hero-mission {
+            flex-grow: 1; /* Занимает все доступное пространство в центре */
+            text-align: center;
+            padding: 0 20px; /* Отступы, чтобы не прилипать к другим блокам */
+        }
+        .hero-mission p {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 0;
+            opacity: 0.85; /* Чуть менее заметно, чем имя */
+        }
+
+        /* Правая часть: Контакты + Кнопки */
+        .hero-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 25px; 
+            flex-wrap: wrap;
+            flex-shrink: 0; /* Не сжиматься */
+        }
         .hero-contacts a {
             color: var(--light-text-color);
-            font-size: 2em; /* Увеличили иконки контактов */
+            font-size: 2em;
             transition: color 0.3s ease, transform 0.3s ease;
         }
+        .hero-contacts a:hover { color: var(--secondary-color); transform: scale(1.1); }
         .hero-actions { display: flex; gap: 15px; }
         .action-btn {
             background: none; border: 1px solid var(--light-text-color); color: var(--light-text-color);
             padding: 5px 10px; border-radius: 5px; cursor: pointer;
-            font-size: 0.9em; /* Маленькие кнопки */
+            font-size: 0.9em;
             transition: background-color 0.3s, color 0.3s;
         }
         .action-btn:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); }
-        .hero-contacts a:hover { color: var(--secondary-color); transform: scale(1.1); }
-        
-        /* --- БЛОК С МИССИЕЙ --- */
-        .mission-statement {
-            text-align: center;
-            padding: 25px 20px;
-            background-color: var(--card-background);
-        }
-        .mission-statement p {
-            font-family: 'Merriweather', serif;
-            font-style: italic;
-            font-size: 1.3em;
-            color: var(--primary-color);
-            max-width: 800px;
-            margin: 0 auto;
-        }
 
         /* --- СТАТИЧНАЯ СТРОКА НАВЫКОВ --- */
         .skills-bar {
