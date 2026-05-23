@@ -162,7 +162,20 @@
         .section-item:last-child { margin-bottom: 0; }
         .section-item h3 { font-size: 1.1em; margin: 0 0 5px 0;}
         .section-item p { margin: 0; }
-        .date { font-style: italic; color: #777; font-size: 0.9em; }
+        .date {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #555;
+            font-size: 0.85em;
+            background: #f1f3f5;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin: 6px 0;
+        }
+        .date i {
+            color: #888;
+        }
         .responsibilities { padding-left: 20px; margin: 5px 0 0 0; }
 
         
@@ -247,17 +260,17 @@
             <div class="section-item">
                 <h3 data-translate-key="edu1_title">МФТИ (бакалавриат)</h3>
                 <p><strong data-translate-key="specialtyLabel">Специальность:</strong> <span data-translate-key="edu1_specialty">ПМИ</span></p>
-                <p class="date"><span data-translate-key="yearsLabel">Годы:</span> 2023 - <span data-translate-key="present">н.в.</span></p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> 2023 - <span data-translate-key="present">н.в.</span></div>
             </div>
             <div class="section-item">
                 <h3 data-translate-key="edu2_title">Deep Learning School</h3>
                 <p><strong data-translate-key="courseLabel">Курс:</strong> ML</p>
-                <p class="date"><span data-translate-key="yearLabel">Год:</span> 2021</p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> 2021</div>
             </div>
             <div class="section-item">
                 <h3 data-translate-key="edu3_title">УРТК им. Попова (среднее специальное)</h3>
                 <p><strong data-translate-key="specialtyLabel">Специальность:</strong> <span data-translate-key="edu3_specialty">Радиоаппаратостроение</span></p>
-                <p class="date"><span data-translate-key="yearLabel">Год:</span> 2013-2018</p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> 2013-2018</div>
             </div>
         </div>
 
@@ -266,7 +279,7 @@
             <div class="section-item">
                 <h3>DeepPavlov</h3>
                 <p><strong data-translate-key="positionLabel">Должность:</strong> NLP Engineer</p>
-                <p class="date"><span data-translate-key="exp1_date_start">июль 2024</span> - <span data-translate-key="present">н.в.</span></p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> <span data-translate-key="exp1_date_start">июль 2024</span> - <span data-translate-key="present">н.в.</span></div>
                 <ul class="responsibilities" data-translate-key="exp1_resp">
                     <li>Создание модулей перевода и интентов робота-продавца</li>
                     <li>Разработка фреймворка <a href="https://github.com/deeppavlov/AutoIntent" target="_blank">AutoIntent</a> </li>
@@ -282,7 +295,7 @@
             <div class="section-item">
                 <h3 data-translate-key="exp2_company">НИЦ Резонанс</h3>
                 <p><strong data-translate-key="positionLabel">Должность:</strong> <span data-translate-key="exp2_position">Инженер-программист</span></p>
-                <p class="date"><span data-translate-key="exp2_date_start">Июль 2021</span> - <span data-translate-key="exp2_date_end">Август 2023</span></p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> <span data-translate-key="exp2_date_start">Июль 2021</span> - <span data-translate-key="exp2_date_end">Август 2023</span></div>
                 <ul class="responsibilities" data-translate-key="exp2_resp">
                     <li>Разработка ПО рабочего места оператора</li>
                     <li>Сервисное обслуживание радиолокаторов</li>
@@ -295,7 +308,7 @@
             <div class="section-item">
                 <h3 data-translate-key="exp3_company">Алмаз-Антей</h3>
                 <p><strong data-translate-key="positionLabel">Должность:</strong> <span data-translate-key="exp3_position">Инженер-программист</span></p>
-                <p class="date"><span data-translate-key="exp3_date_start">Апрель 2020</span> - <span data-translate-key="exp3_date_end">Июнь 2021</span></p>
+                <div class="date"><i class="fa-regular fa-calendar-days"></i> <span data-translate-key="exp3_date_start">Апрель 2020</span> - <span data-translate-key="exp3_date_end">Июнь 2021</span></div>
                 <ul class="responsibilities" data-translate-key="exp3_resp">
                     <li>Разработка встроенного ПО метеосистем</li>
                     <li>Разработка и сопровождение ПО для настройки и регулировки метеосистем</li>
@@ -366,8 +379,6 @@ const translations = {
         projectsTitle: '<i class="fas fa-project-diagram"></i> Проекты',
         specialtyLabel: 'Специальность:',
         courseLabel: 'Курс:',
-        yearsLabel: 'Годы:',
-        yearLabel: 'Год:',
         present: 'н.в.',
         positionLabel: 'Должность:',
         stackLabel: 'Стек:',
@@ -405,8 +416,6 @@ const translations = {
         projectsTitle: '<i class="fas fa-project-diagram"></i> Projects',
         specialtyLabel: 'Specialty:',
         courseLabel: 'Course:',
-        yearsLabel: 'Years:',
-        yearLabel: 'Year:',
         present: 'present',
         positionLabel: 'Position:',
         stackLabel: 'Stack:',
