@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- DATA-TRANSLATE-KEY: pageTitle -->
+    
     <title>Резюме - Сергей Малышев</title>
     
-    <!-- Подключаем шрифты Google -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Основной шрифт + шрифт для акцентной фразы (Caveat) -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
     
-    <!-- Подключаем иконки Font Awesome -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Подключаем библиотеку для генерации PDF -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
@@ -36,7 +36,7 @@
             transition: background-color 0.3s;
         }
 
-        /* --- ШАПКА --- */
+        
         .hero {
             background-color: var(--primary-color);
             color: var(--light-text-color);
@@ -51,7 +51,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-grow: 1; /* Позволяет занимать доступное место */
+            flex-grow: 1; 
         }
         .hero-photo {
             width: 80px;
@@ -72,12 +72,12 @@
             opacity: 0.9;
         }
         .hero-motto {
-            font-family: 'Caveat', cursive; /* Красивый рукописный шрифт */
+            font-family: 'Caveat', cursive; 
             font-size: 1.4em;
             color: var(--light-text-color);
             padding: 0 20px;
             text-align: center;
-            flex-grow: 2; /* Занимает больше места, центрируясь */
+            flex-grow: 2; 
         }
         .hero-right {
             display: flex;
@@ -86,7 +86,7 @@
         }
         .hero-contacts a {
             color: var(--light-text-color);
-            font-size: 2em; /* Увеличили иконки контактов */
+            font-size: 2em; 
             transition: color 0.3s ease, transform 0.3s ease;
         }
         .hero-contacts a:hover {
@@ -94,7 +94,7 @@
             transform: scale(1.1);
         }
         
-        /* --- Панель управления (язык, PDF) --- */
+        
         .controls {
             display: flex;
             gap: 15px;
@@ -105,7 +105,7 @@
             background: none;
             border: 2px solid var(--light-text-color);
             color: var(--light-text-color);
-            font-size: 0.9em; /* Маленький размер */
+            font-size: 0.9em; 
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
@@ -170,11 +170,11 @@
         .date { font-style: italic; color: #777; font-size: 0.9em; }
         .responsibilities { padding-left: 20px; margin: 5px 0 0 0; }
 
-        /* --- АДАПТИВНОСТЬ --- */
+        
         @media (min-width: 768px) { .main-content { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1100px) { .main-content { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 950px) {
-            .hero-motto { display: none; } /* Скрываем девиз на средних экранах */
+            .hero-motto { display: none; } 
         }
         @media (max-width: 767px) {
             .hero { flex-direction: column; text-align: center; }
@@ -187,21 +187,21 @@
             .hero-contacts a { margin: 0 15px; }
         }
 
-        /* --- СТИЛИ ДЛЯ ГЕНЕРАЦИИ PDF --- */
+        
         body.pdf-export-mode {
-            background-color: #fff; /* Делаем фон белым для печати */
+            background-color: #fff; 
         }
         body.pdf-export-mode .main-content {
-            grid-template-columns: 1fr !important; /* Форсируем одну колонку */
+            grid-template-columns: 1fr !important; 
             padding: 0;
             gap: 15px;
         }
         body.pdf-export-mode .card:hover {
-            transform: none; /* Отключаем hover-эффекты */
+            transform: none; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         body.pdf-export-mode .hero-right {
-            display: none; /* Скрываем кнопки управления в PDF */
+            display: none; 
         }
     </style>
 </head>
@@ -319,7 +319,6 @@
     </main>
 
 <script>
-// --- СЛОВАРЬ С ПЕРЕВОДАМИ ---
 const translations = {
     ru: {
         pageTitle: 'Резюме - Сергей Малышев',
@@ -401,7 +400,6 @@ const translations = {
     }
 };
 
-// --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА И PDF ---
 document.addEventListener('DOMContentLoaded', () => {
     const langBtn = document.getElementById('lang-btn');
     const pdfBtn = document.getElementById('pdf-btn');
@@ -425,26 +423,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     pdfBtn.addEventListener('click', () => {
-        // 1. Создаем клон всего тела документа. `true` означает глубокое клонирование (со всем содержимым).
         const elementToPrint = document.body.cloneNode(true);
 
-        // 2. Применяем к клону класс, который переведет его в "PDF-режим".
-        //    Так как этот клон не виден на странице, пользователь не заметит изменений.
         elementToPrint.classList.add('pdf-export-mode');
 
-        // 3. Устанавливаем параметры для PDF.
         const langSuffix = currentLang === 'en' ? 'CV' : 'Resume';
         const opt = {
-            margin:       [10, 10, 10, 10], // top, left, bottom, right in mm
+            margin:       [10, 10, 10, 10],
             filename:     `Sergey_Malyshev_${langSuffix}.pdf`,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true },
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
-        // 4. Генерируем PDF из нашего невидимого клона.
-        //    После генерации клон автоматически уничтожается сборщиком мусора.
-        //    Основная страница остается нетронутой.
         html2pdf().from(elementToPrint).set(opt).save();
     });
 });
